@@ -6,18 +6,32 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct ListingDataView: View {
     
-    
-    
     var body: some View {
         ScrollView {
-            ListingImageCarouseView()
-                .frame(height: 400)
-                .edgesIgnoringSafeArea(.top)
-                .cornerRadius(20.0)
+            ZStack (alignment: .topLeading, content: {
+                ListingImageCarouseView()
+                    .frame(height: 400)
+                
+                Button {
+                    //click event
+                    print("Button Tap")
+                    //dismiss()
+                } label: {
+                    Image(systemName: "chevron.left")
+                        .foregroundColor(.black)
+                        .background{
+                            Circle()
+                                .fill(.white)
+                                .frame(width: 40, height: 40)
+                        }
+                }.padding(32)
+            })
             
+            // Hotel About Info
             VStack(alignment: .leading, spacing: 8) {
                 Text("Miami Villa")
                     .font(.title)
@@ -70,7 +84,7 @@ struct ListingDataView: View {
             
             Divider()
             
-            //Listing Fetures
+            //Listing Fetures View
             VStack(alignment: .leading, spacing: 16.0, content: {
                 ForEach(0 ..< 2) { feature in
                     HStack(spacing: 12, content: {
@@ -92,7 +106,8 @@ struct ListingDataView: View {
             .padding()
             
             Divider()
-            //Badroom view
+            
+            //Badroom View
             VStack(alignment: .leading, spacing: 16, content: {
                 Text("Where you will sleep")
                     .font(.headline)
@@ -113,10 +128,57 @@ struct ListingDataView: View {
                     })
                 }
                 
+            })
+                .padding()
             
+            Divider()
+            
+            //Map View
+            VStack (alignment: .leading, spacing: 14.0, content: {
+                Text("Where you will be")
+                    .font(.headline)
+                
+                MapView(coordinates: CLLocationCoordinate2D(latitude: 21.8380, longitude: 73.7191)).frame(height:300)
+                    .cornerRadius(12)
             })
                 .padding()
         }
+        .overlay(alignment: .bottom) {
+            VStack{
+                Divider()
+                    .padding(.bottom)
+                HStack{
+                    VStack(alignment: .leading){
+                        
+                        Text("$500")
+                            .font(.subheadline)
+                            .fontWeight(.semibold)
+                        Text("Total before texes")
+                            .font(.footnote)
+                        Text("Oct 15 - 20")
+                            .font(.footnote)
+                            .fontWeight(.semibold)
+                            .underline()
+                    }
+                    Spacer()
+                    
+                    Button {
+                        print("Button Tap")
+                    } label: {
+                        Text("Reserve")
+                            .frame(width: 140, height: 40)
+                            .background(.pink)
+                            .font(.subheadline)
+                            .foregroundStyle(.white)
+                            .clipShape(Rectangle())
+                            .cornerRadius(12)
+                    }
+                }
+                .padding(.horizontal, 32)
+            }
+            .background(.white)
+        }
+        .edgesIgnoringSafeArea(.top)
     }
 }
 

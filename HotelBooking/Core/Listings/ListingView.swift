@@ -11,20 +11,10 @@ struct ListingView: View {
     var images = ["Image", "Image1","Image2","Image3"]
     var body: some View {
         VStack(spacing: 0, content:{
+            //Tab Imageview
             ListingImageCarouseView()
                 .frame(height: 300)
                 .cornerRadius(20.0)
-//            TabView {
-//                ForEach(images, id: \.self) { image in
-////                    Rectangle()
-//                    Image(image)
-//                        .resizable()
-//                        .scaledToFit()
-//                }
-//            }
-//            .frame(height: 320)
-//            .cornerRadius(20)
-//            .tabViewStyle(.page)
             
             //Listing Details
             HStack {
@@ -42,9 +32,6 @@ struct ListingView: View {
             }
             .padding(EdgeInsets(top: 0.0, leading: 20.0, bottom: 0.0, trailing: 20.0))
         } )
-        
-        
-
     }
 }
 
