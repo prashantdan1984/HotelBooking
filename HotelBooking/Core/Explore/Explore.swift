@@ -11,12 +11,15 @@ struct Explore: View {
     var body: some View {
         NavigationView{
             ScrollView {
+                //search  view
+                SearchAndFilterBar()
+                
                 LazyVStack (spacing: 32, content: {
                     ForEach(1...10, id: \.self) { listing in
-                       // NavigationLink(ListingDataView){
+                        NavigationLink(destination: ListingDataView()) {
                             ListingView()
                                 .foregroundColor(.black)
-                       // }
+                        }
                     }
                 }).padding()
             }

@@ -33,8 +33,9 @@ struct SearchAndFilterBar: View {
             Capsule()
                 .stroke(lineWidth: 0.5)
                 .shadow(color: .black.opacity(0.4), radius: 2)
-                .foregroundStyle(Color(UIColor()))
+                //.foregroundStyle(Color(UIColor()))
         }
+        .padding()
     }
 }
 
